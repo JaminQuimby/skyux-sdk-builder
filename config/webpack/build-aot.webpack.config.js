@@ -31,6 +31,7 @@ function getWebpackConfig(skyPagesConfig, argv) {
 
     entry: {
       polyfills: [skyPagesConfigUtil.spaPathTempSrc('polyfills.ts')],
+      workerLoader: [skyPagesConfigUtil.spaPathTempSrc('workerLoader.ts')],
       app: [skyPagesConfigUtil.spaPathTempSrc('main-internal.aot.ts')]
     },
 

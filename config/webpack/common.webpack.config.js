@@ -68,7 +68,10 @@ function getWebpackConfig(skyPagesConfig, argv = {}) {
       template: skyPagesConfig.runtime.app.template,
       inject: skyPagesConfig.runtime.app.inject,
       runtime: skyPagesConfig.runtime,
-      skyux: skyPagesConfig.skyux
+      skyux: skyPagesConfig.skyux,
+      "excludeChunks": [
+        "webworker"
+      ]
     }),
 
     new webpack.DefinePlugin({
@@ -112,6 +115,7 @@ function getWebpackConfig(skyPagesConfig, argv = {}) {
   return {
     entry: {
       polyfills: [outPath('src', 'polyfills.ts')],
+      webworker: [outPath('src', 'workerLoader.ts')],
       app: [appPath]
     },
     output: {

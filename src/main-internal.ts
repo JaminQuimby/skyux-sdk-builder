@@ -1,4 +1,8 @@
 declare var module: any;
+import {
+  bootstrapWorkerUi,
+  WORKER_UI_LOCATION_PROVIDERS
+} from '@angular/platform-webworker';
 
 import {
   NgModuleRef
@@ -18,8 +22,8 @@ import {
 
 SkyAppBootstrapper
   .processBootstrapConfig()
-  .then(() => platformBrowserDynamic().bootstrapModule(AppModule))
   .then((ngModuleRef: NgModuleRef<any>) => {
+    bootstrapWorkerUi('otg2017\/webworker.js', WORKER_UI_LOCATION_PROVIDERS);
     if (module.hot) {
       module.hot.accept();
       module.hot.dispose(() => ngModuleRef.destroy());

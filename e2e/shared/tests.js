@@ -25,6 +25,7 @@ module.exports = {
     [
       'app.*.js',
       'polyfills.*.js',
+      'webworker.*.js',
       'skyux.*.chunk.js',
       'vendor.*.chunk.js'
     ].forEach((file) => {

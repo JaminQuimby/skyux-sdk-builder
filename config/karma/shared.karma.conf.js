@@ -44,9 +44,11 @@ function getConfig(config) {
   const specBundle = `${__dirname}/../../utils/spec-bundle.js`;
   const specStyles = `${__dirname}/../../utils/spec-styles.js`;
   const polyfillsBundle = `${__dirname}/../../src/polyfills.ts`;
+  const workerLoaderBundle = `${__dirname}/../../src/workerLoader.ts`;
 
   const preprocessors = {};
 
+  preprocessors[workerLoaderBundle] = ['webpack'];
   preprocessors[polyfillsBundle] = ['webpack'];
   preprocessors[specBundle] = ['coverage', 'webpack', 'sourcemap'];
   preprocessors[specStyles] = ['webpack'];
@@ -59,6 +61,10 @@ function getConfig(config) {
     frameworks: ['jasmine'],
     exclude: [],
     files: [
+      {
+        pattern: workerLoaderBundle,
+        watched: false
+      },
       {
         pattern: polyfillsBundle,
         watched: false
